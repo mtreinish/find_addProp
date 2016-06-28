@@ -24,10 +24,10 @@ def find_additionalProperties_in_traceback(traceback):
             continue
         if found_error_msg:
             error_msg.append(temp_line)
-        if not error_msg_re.search(temp_line):
+        if error_msg_re.search(temp_line):
             found_error_msg = True
             continue
-
+    error_msg = error_msg[1:]
     if not found_error_msg and not error_msg:
         return False
     else:
