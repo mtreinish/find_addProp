@@ -27,7 +27,7 @@ def find_additionalProperties_in_traceback(traceback):
         if error_msg_re.search(temp_line):
             found_error_msg = True
             continue
-    error_msg = error_msg[1:]
+
     if not found_error_msg and not error_msg:
         return False
     else:
@@ -35,7 +35,7 @@ def find_additionalProperties_in_traceback(traceback):
             "^Failed validating 'additionalProperties' in schema")
         # TODO(mtreinish): Add more specific checks to limit the allowed
         # APIs with additional properties
-        if not properties_regex.search(error_msg[0].strip()):
+        if not properties_regex.search(error_msg[1].strip()):
             return False
         else:
             return error_msg
